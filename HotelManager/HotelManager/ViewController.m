@@ -1,0 +1,204 @@
+//
+//  ViewController.m
+//  HotelManager
+//
+//  Created by Lacey Vu on 3/21/16.
+//  Copyright © 2016 Lacey Vu. All rights reserved.
+//
+
+#import "ViewController.h"
+#import "HotelsViewController.h"
+
+@interface ViewController ()
+
+
+
+@end
+
+@implementation ViewController
+
+-(void)loadView
+{
+    [super loadView];
+    [self setupCustomLayout];
+    
+}
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self setupViewController];
+
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+
+}
+
+-(void)setupViewController
+{
+    [self.navigationItem setTitle:@"H & M"];
+}
+
+-(void)setupCustomLayout
+{
+    float navigationBarHeight = CGRectGetHeight(self.navigationController.navigationBar.frame);
+    
+    UIButton *browseButton = [[UIButton alloc]init];
+    UIButton *reserveButton = [[UIButton alloc]init];
+    UIButton *lookupButton = [[UIButton alloc]init];
+    
+    [browseButton setTitle:@"Browse" forState:UIControlStateNormal];
+    [reserveButton setTitle:@"Reserve" forState:UIControlStateNormal];
+    [lookupButton setTitle:@"Lookup" forState:UIControlStateNormal];
+    
+    [browseButton setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:.76 alpha:1.0]];
+    [reserveButton setBackgroundColor:[UIColor colorWithRed:1.0 green:0.91 blue:0.76 alpha:1.0]];
+    [lookupButton setBackgroundColor:[UIColor colorWithRed:0.86 green:0.91 blue:0.76 alpha:1.0]];
+    
+    [browseButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [reserveButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [lookupButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    [browseButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [reserveButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [lookupButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    [self.view addSubview:browseButton];
+    [self.view addSubview:reserveButton];
+    [self.view addSubview:lookupButton];
+    
+
+
+    NSLayoutConstraint *browseLeading = [NSLayoutConstraint constraintWithItem: browseButton
+                                                               attribute:NSLayoutAttributeLeading
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:self.view
+                                                               attribute:NSLayoutAttributeLeading
+                                                              multiplier:1.0
+                                                                constant:0.0];
+    
+    NSLayoutConstraint *browseTop = [NSLayoutConstraint constraintWithItem: browseButton
+                                                           attribute:NSLayoutAttributeTop
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:self.view
+                                                           attribute:NSLayoutAttributeTop
+                                                          multiplier:1.0
+                                                            constant:0.0];
+    
+    NSLayoutConstraint *browseTrailing = [NSLayoutConstraint constraintWithItem:browseButton
+                                                                attribute:NSLayoutAttributeTrailing
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.view
+                                                                attribute:NSLayoutAttributeTrailing
+                                                               multiplier:1.0
+                                                                 constant:0.0];
+    
+
+    NSLayoutConstraint *browsingHeight = [NSLayoutConstraint constraintWithItem:browseButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:reserveButton attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0];
+    
+    browseLeading.active = YES;
+    browseTop.active = YES;
+    browseTrailing.active = YES;
+    browsingHeight.active = YES;
+    
+ 
+    
+    
+    NSLayoutConstraint *reserveLeading = [NSLayoutConstraint constraintWithItem: reserveButton
+                                                                     attribute:NSLayoutAttributeLeading
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:self.view
+                                                                     attribute:NSLayoutAttributeLeading
+                                                                    multiplier:1.0
+                                                                      constant:0.0];
+    
+    NSLayoutConstraint *reserveTop = [NSLayoutConstraint constraintWithItem: reserveButton
+                                                                 attribute:NSLayoutAttributeTop
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:browseButton
+                                                                 attribute:NSLayoutAttributeBottom
+                                                                multiplier:1.0
+                                                                  constant:0.0];
+    
+    NSLayoutConstraint *reserveTrailing = [NSLayoutConstraint constraintWithItem:reserveButton
+                                                                      attribute:NSLayoutAttributeTrailing
+                                                                      relatedBy:NSLayoutRelationEqual
+                                                                         toItem:self.view
+                                                                      attribute:NSLayoutAttributeTrailing
+                                                                     multiplier:1.0
+                                                                       constant:0.0];
+    
+    NSLayoutConstraint *reservingHeight = [NSLayoutConstraint constraintWithItem:reserveButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:lookupButton attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0];
+
+    reserveLeading.active = YES;
+    reserveTop.active = YES;
+    reserveTrailing.active = YES;
+    reservingHeight.active = YES;
+    
+    
+    
+    NSLayoutConstraint *lookupLeading = [NSLayoutConstraint constraintWithItem: lookupButton
+                                                                     attribute:NSLayoutAttributeLeading
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:self.view
+                                                                     attribute:NSLayoutAttributeLeading
+                                                                    multiplier:1.0
+                                                                      constant:0.0];
+    
+    NSLayoutConstraint *lookupTop = [NSLayoutConstraint constraintWithItem: lookupButton
+                                                                 attribute:NSLayoutAttributeTop
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:reserveButton
+                                                                 attribute:NSLayoutAttributeBottom
+                                                                multiplier:1.0
+                                                                  constant:0.0];
+    
+    NSLayoutConstraint *lookupTrailing = [NSLayoutConstraint constraintWithItem:lookupButton
+                                                                      attribute:NSLayoutAttributeTrailing
+                                                                      relatedBy:NSLayoutRelationEqual
+                                                                         toItem:self.view
+                                                                      attribute:NSLayoutAttributeTrailing
+                                                                     multiplier:1.0
+                                                                       constant:0.0];
+    
+    NSLayoutConstraint *lookupBottom = [NSLayoutConstraint constraintWithItem:lookupButton
+                                                                    attribute:NSLayoutAttributeBottom
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.view
+                                                                    attribute:NSLayoutAttributeBottom
+                                                                   multiplier:1.0
+                                                                     constant:0.0];
+    
+    NSLayoutConstraint *lookupHeight = [NSLayoutConstraint constraintWithItem:lookupButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:reserveButton attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0];
+     
+    lookupLeading.active = YES;
+    lookupTrailing.active = YES;
+    lookupTop.active = YES;
+    lookupBottom.active = YES;
+    lookupHeight.active = YES;
+
+}
+
+-(void)browseButtonSelected:(UIButton *)sender
+{
+    [self.navigationController pushViewController:[[HotelsViewController alloc]init] animated:YES];
+}
+
+-(void)bookButtonSelected:(UIButton *)sender
+{
+    NSLog(@"%s", __FUNCTION__);
+}
+
+-(void)lookupButtonSelected:(UIButton *)sender
+{
+    NSLog(@"%s", __FUNCTION__);
+}
+
+
+
+
+
+
+@end
