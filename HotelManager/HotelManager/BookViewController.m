@@ -108,12 +108,14 @@
         NSManagedObjectContext *context = [NSManagedObjectContext currentContext];
         Guest *guest = [NSEntityDescription insertNewObjectForEntityForName:@"Guest" inManagedObjectContext:context];
         guest.name = self.firstNameField.text;
+        guest.lastName = self.lastNameField.text;
+        guest.email = self.emailField.text;
         
         //save
         [ReservationService bookReservationWithGuest:guest room:self.room startDate:self.startDate end:self.endDate];
         [self.navigationController popToRootViewControllerAnimated:YES];
+         NSLog(@"%@", guest.lastName);
         
-        //guest.last name. guest.email. assign values to textfield
     }
     
 }
