@@ -138,10 +138,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    NSString *rooms = self.dataSource[indexPath.row];
-    
-    
-    
+    RoomsViewController *roomViewController = [[RoomsViewController alloc]init];
+    roomViewController.selectedRoomForHotel = self.dataSource[indexPath.row];
     [self.navigationController pushViewController: [[RoomsViewController alloc]init] animated:YES];
     
 }
