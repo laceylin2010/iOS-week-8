@@ -8,8 +8,7 @@
 
 #import "ViewController.h"
 #import "HotelsViewController.h"
-#import "ReserveViewController.h"
-#import "LookupViewController.h"
+#import "DateViewController.h"
 
 @interface ViewController ()
 
@@ -52,9 +51,9 @@
     UIButton *reserveButton = [[UIButton alloc]init];
     UIButton *lookupButton = [[UIButton alloc]init];
     
-    [browseButton setTitle:@"Browse" forState:UIControlStateNormal];
-    [reserveButton setTitle:@"Reserve" forState:UIControlStateNormal];
-    [lookupButton setTitle:@"Lookup" forState:UIControlStateNormal];
+    [browseButton setTitle:@"Hotels" forState:UIControlStateNormal];
+    [reserveButton setTitle:@"Book a Hotel" forState:UIControlStateNormal];
+    [lookupButton setTitle:@"Lookup Reservation" forState:UIControlStateNormal];
     
     [browseButton setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:.76 alpha:1.0]];
     [reserveButton setBackgroundColor:[UIColor colorWithRed:1.0 green:0.91 blue:0.76 alpha:1.0]];
@@ -197,13 +196,13 @@
 -(void)reserveButtonSelected:(UIButton *)sender
 {
 
-    [self.navigationController pushViewController:[[ReserveViewController alloc]init] animated:YES];
+    [self.navigationController pushViewController:[[DateViewController alloc]init] animated:YES];
     
 }
 
 -(void)lookupButtonSelected:(UIButton *)sender
 {
-    [self.navigationController pushViewController:[[LookupViewController alloc]init] animated:YES];
+//    [self.navigationController pushViewController:[[LookupViewController alloc]init] animated:YES];
 }
 
 
