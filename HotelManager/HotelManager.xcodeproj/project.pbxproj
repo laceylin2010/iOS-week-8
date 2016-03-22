@@ -25,6 +25,9 @@
 		AF3865451CA0636800EE71BD /* room.png in Resources */ = {isa = PBXBuildFile; fileRef = AF3865431CA0636800EE71BD /* room.png */; };
 		AF3865461CA0636800EE71BD /* hotel.png in Resources */ = {isa = PBXBuildFile; fileRef = AF3865441CA0636800EE71BD /* hotel.png */; };
 		AF3865491CA06D8D00EE71BD /* HotelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3865481CA06D8D00EE71BD /* HotelsViewController.m */; };
+		AF38654F1CA0AD0200EE71BD /* ReserveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF38654E1CA0AD0200EE71BD /* ReserveViewController.m */; };
+		AF3865521CA0AD3C00EE71BD /* LookupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3865511CA0AD3C00EE71BD /* LookupViewController.m */; };
+		AF3865551CA0AEC200EE71BD /* RoomsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3865541CA0AEC200EE71BD /* RoomsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +62,12 @@
 		AF3865441CA0636800EE71BD /* hotel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotel.png; sourceTree = "<group>"; };
 		AF3865471CA06D8D00EE71BD /* HotelsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelsViewController.h; sourceTree = "<group>"; };
 		AF3865481CA06D8D00EE71BD /* HotelsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelsViewController.m; sourceTree = "<group>"; };
+		AF38654D1CA0AD0200EE71BD /* ReserveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReserveViewController.h; path = ../ReserveViewController.h; sourceTree = "<group>"; };
+		AF38654E1CA0AD0200EE71BD /* ReserveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReserveViewController.m; path = ../ReserveViewController.m; sourceTree = "<group>"; };
+		AF3865501CA0AD3C00EE71BD /* LookupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LookupViewController.h; sourceTree = "<group>"; };
+		AF3865511CA0AD3C00EE71BD /* LookupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LookupViewController.m; sourceTree = "<group>"; };
+		AF3865531CA0AEC200EE71BD /* RoomsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomsViewController.h; sourceTree = "<group>"; };
+		AF3865541CA0AEC200EE71BD /* RoomsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +126,12 @@
 				AF3864F81CA05C5100EE71BD /* ViewController.m */,
 				AF3865471CA06D8D00EE71BD /* HotelsViewController.h */,
 				AF3865481CA06D8D00EE71BD /* HotelsViewController.m */,
+				AF38654D1CA0AD0200EE71BD /* ReserveViewController.h */,
+				AF38654E1CA0AD0200EE71BD /* ReserveViewController.m */,
+				AF3865531CA0AEC200EE71BD /* RoomsViewController.h */,
+				AF3865541CA0AEC200EE71BD /* RoomsViewController.m */,
+				AF3865501CA0AD3C00EE71BD /* LookupViewController.h */,
+				AF3865511CA0AD3C00EE71BD /* LookupViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -253,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF3865521CA0AD3C00EE71BD /* LookupViewController.m in Sources */,
 				AF3865381CA0623E00EE71BD /* Room.m in Sources */,
 				AF3865491CA06D8D00EE71BD /* HotelsViewController.m in Sources */,
 				AF3865371CA0623E00EE71BD /* Room+CoreDataProperties.m in Sources */,
@@ -262,10 +278,12 @@
 				AF3865391CA0623E00EE71BD /* Reservation+CoreDataProperties.m in Sources */,
 				AF38653E1CA0623E00EE71BD /* Guest.m in Sources */,
 				AF38653B1CA0623E00EE71BD /* Hotel+CoreDataProperties.m in Sources */,
+				AF38654F1CA0AD0200EE71BD /* ReserveViewController.m in Sources */,
 				AF3864F61CA05C5100EE71BD /* AppDelegate.m in Sources */,
 				AF38653C1CA0623E00EE71BD /* Hotel.m in Sources */,
 				AF3864F31CA05C5100EE71BD /* main.m in Sources */,
 				AF38653D1CA0623E00EE71BD /* Guest+CoreDataProperties.m in Sources */,
+				AF3865551CA0AEC200EE71BD /* RoomsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,8 @@
 #import "HotelsViewController.h"
 #import "AppDelegate.h"
 #import "Hotel.h"
+#import "RoomsViewController.h"
+
 
 @interface HotelsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -25,13 +27,9 @@
         
         AppDelegate *delegate = (AppDelegate *) [[UIApplication sharedApplication]delegate];
         NSManagedObjectContext *context = delegate.managedObjectContext;
-        
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
-        
         NSError *error;
-        
         _dataSource = [context executeFetchRequest:request error:&error];
-        
         if (error) {
             NSLog(@"Error: %@", error.localizedDescription);
         }
@@ -139,8 +137,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Navigate to rooms view controller and display rooms for THIS hotel + a table View Header");
-    //when clicking on solid state should navigate to another view controller. get rooms and set the header with another image. replicating.
+
+    NSString *rooms = self.dataSource[indexPath.row];
+    
+    
+    
+    [self.navigationController pushViewController: [[RoomsViewController alloc]init] animated:YES];
+    
 }
+
+
+
 
 @end

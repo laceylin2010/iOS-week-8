@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "HotelsViewController.h"
+#import "ReserveViewController.h"
+#import "LookupViewController.h"
 
 @interface ViewController ()
 
@@ -27,6 +29,7 @@
 {
     [super viewDidLoad];
     [self setupViewController];
+
 
 }
 
@@ -178,6 +181,10 @@
     lookupTop.active = YES;
     lookupBottom.active = YES;
     lookupHeight.active = YES;
+    
+    [browseButton addTarget:self action:@selector(browseButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
+    [reserveButton addTarget:self action:@selector(reserveButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
+    [lookupButton addTarget:self action:@selector(lookupButtonSelected:) forControlEvents:UIControlEventTouchUpInside];
 
 }
 
@@ -186,18 +193,18 @@
     [self.navigationController pushViewController:[[HotelsViewController alloc]init] animated:YES];
 }
 
--(void)bookButtonSelected:(UIButton *)sender
+
+-(void)reserveButtonSelected:(UIButton *)sender
 {
-    NSLog(@"%s", __FUNCTION__);
+
+    [self.navigationController pushViewController:[[ReserveViewController alloc]init] animated:YES];
+    
 }
 
 -(void)lookupButtonSelected:(UIButton *)sender
 {
-    NSLog(@"%s", __FUNCTION__);
+    [self.navigationController pushViewController:[[LookupViewController alloc]init] animated:YES];
 }
-
-
-
 
 
 
