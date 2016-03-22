@@ -13,6 +13,8 @@
 
 @property (strong, nonatomic)UIDatePicker *startPicker;
 @property (strong, nonatomic)UIDatePicker *endPicker;
+@property (readonly)NSTimeInterval timeIntervalSinceNow;
+
 
 @end
 
@@ -74,6 +76,7 @@
 
 -(void)setupDateViewController
 {
+    
     [self.view setBackgroundColor:[UIColor whiteColor]];
     [self.navigationItem setTitle:@"Select Dates"];
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonSelected:)]];
@@ -82,6 +85,7 @@
 
 -(void)doneButtonSelected:(UIBarButtonItem *)sender
 {
+    
     if ([self.startPicker.date timeIntervalSinceReferenceDate] >= [self.endPicker.date timeIntervalSinceReferenceDate]) {
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Date Error" message:@"Start date must come before end date" preferredStyle:UIAlertControllerStyleAlert];
                                         
@@ -93,6 +97,17 @@
         
         [controller addAction:okAction];
         [self presentViewController:controller animated:YES completion: nil];
+    }
+    
+    else if ([self.startPicker.date timeIntervalSinceNow] <= [self.startPicker.date timeIntervalSinceReferenceDate]){
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Date Error" message:@"Start date cannot be a previous day" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.startPicker setDate: [NSDate date]];
+        }];
+        
+        [controller addAction:okAction];
+        [self presentViewController:controller animated:YES completion:nil];
     }
     
     else {
