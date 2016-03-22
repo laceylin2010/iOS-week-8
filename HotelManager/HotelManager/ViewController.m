@@ -55,13 +55,13 @@
     [reserveButton setTitle:@"Book a Hotel" forState:UIControlStateNormal];
     [lookupButton setTitle:@"Lookup Reservation" forState:UIControlStateNormal];
     
-    [browseButton setBackgroundColor:[UIColor colorWithRed:242.0 green:61.0 blue:61.0 alpha:0.0]];
-    [reserveButton setBackgroundColor:[UIColor colorWithRed:1.0 green:0.91 blue:0.76 alpha:1.0]];
-    [lookupButton setBackgroundColor:[UIColor colorWithRed:0.86 green:0.91 blue:0.76 alpha:1.0]];
+    [browseButton setBackgroundColor:[UIColor colorWithRed:4.0/255.0 green:196.0/255.0 blue:217.0/255.0 alpha:1.0]];
+    [reserveButton setBackgroundColor:[UIColor colorWithRed:242.0/255.0 green:61.0/255.0 blue:61.0/255.0 alpha:1.0]];
+    [lookupButton setBackgroundColor:[UIColor colorWithRed:128.0/255.0 green:32.0/255.0 blue:140/255.0 alpha:1.0]];
     
-    [browseButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [reserveButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [lookupButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [browseButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [reserveButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [lookupButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     [browseButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [reserveButton setTranslatesAutoresizingMaskIntoConstraints:NO];
