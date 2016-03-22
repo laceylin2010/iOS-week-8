@@ -12,6 +12,6 @@
 
 @interface RoomsViewController : UIViewController
 
-@property (strong, nonatomic)Hotel* selectedRoomForHotel;
+@property (strong, nonatomic)Hotel* hotel;
 
 @end

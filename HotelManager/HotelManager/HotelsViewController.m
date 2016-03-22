@@ -139,8 +139,8 @@
 {
 
     RoomsViewController *roomViewController = [[RoomsViewController alloc]init];
-    roomViewController.selectedRoomForHotel = self.dataSource[indexPath.row];
-    [self.navigationController pushViewController: [[RoomsViewController alloc]init] animated:YES];
+    roomViewController.hotel = self.dataSource[indexPath.row];
+    [self.navigationController pushViewController: roomViewController animated:YES];
     
 }
 

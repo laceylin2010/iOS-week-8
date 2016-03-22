@@ -23,25 +23,10 @@
 -(NSArray *)dataSource //isnt grabbing the information from the json
 {
     if (!_dataSource) {
-        AppDelegate *delegate = (AppDelegate *) [[UIApplication sharedApplication]delegate];
-        NSManagedObjectContext *context = delegate.managedObjectContext;
-        
-        NSPredicate *hotel =  [NSPredicate predicateWithFormat:@"hotel == %@", self.selectedRoomForHotel];
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Room"];
-        
-        request.predicate = hotel;
-        
-        NSError *error;
-        
-        _dataSource = [context executeFetchRequest:request error:&error];
-        
-        if (error) {
-            NSLog(@"Error: %@", error.localizedDescription);
-            
-        }
+        _dataSource = [self.hotel.rooms allObjects];
         
     }
- 
+    
     return _dataSource;
 }
 
@@ -105,11 +90,9 @@
     
     Room *room = [self.dataSource objectAtIndex:indexPath.row];
     
-    NSString *roomNumber = [room.number stringValue]; //not printing onto the cell
-    cell.textLabel.text = roomNumber;
+    NSString *roomDescription = [NSString stringWithFormat:@"Room: %@, Beds: %@, Rate: %@", room.number, room.beds, room.rate];
+    cell.textLabel.text = roomDescription;
     
-    NSString *numberOfBeds = [room.beds stringValue];
-    cell.textLabel.text = numberOfBeds;
     
     return cell;
 
