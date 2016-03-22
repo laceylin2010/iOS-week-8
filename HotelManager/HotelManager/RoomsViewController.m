@@ -20,7 +20,7 @@
 
 @implementation RoomsViewController
 
--(NSArray *)dataSource
+-(NSArray *)dataSource //isnt grabbing the information from the json
 {
     if (!_dataSource) {
         AppDelegate *delegate = (AppDelegate *) [[UIApplication sharedApplication]delegate];
@@ -104,8 +104,8 @@
     }
     
     Room *room = [self.dataSource objectAtIndex:indexPath.row];
-
-    NSString *roomNumber = [room.number stringValue];
+    
+    NSString *roomNumber = [room.number stringValue]; //not printing onto the cell
     cell.textLabel.text = roomNumber;
     
     NSString *numberOfBeds = [room.beds stringValue];
