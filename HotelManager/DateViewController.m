@@ -7,6 +7,7 @@
 //
 
 #import "DateViewController.h"
+#import "AvailabilityViewController.h"
 
 @interface DateViewController ()
 
@@ -41,8 +42,8 @@
     UIDatePicker *startPicker = [[UIDatePicker alloc]init];
     UIDatePicker *endPicker = [[UIDatePicker alloc]init];
     
-    self.startPicker.datePickerMode = UIDatePickerModeDate;
-    self.endPicker.datePickerMode = UIDatePickerModeDate;
+    startPicker.datePickerMode = UIDatePickerModeDate;
+    endPicker.datePickerMode = UIDatePickerModeDate;
     
     startPicker.translatesAutoresizingMaskIntoConstraints = NO;
     endPicker.translatesAutoresizingMaskIntoConstraints = NO; //makes it so we can do our constraints
@@ -81,7 +82,32 @@
 
 -(void)doneButtonSelected:(UIBarButtonItem *)sender
 {
+    if ([self.startPicker.date timeIntervalSinceReferenceDate] >= [self.endPicker.date timeIntervalSinceReferenceDate]) {
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Date Error" message:@"Start date must come before end date" preferredStyle:UIAlertControllerStyleAlert];
+                                        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.startPicker setDate:[NSDate date]];
+            [self.endPicker setDate:[NSDate date]];
+            
+        }];
+        
+        [controller addAction:okAction];
+        [self presentViewController:controller animated:YES completion: nil];
+    }
+    
+    else {
+        
+        AvailabilityViewController *availabilityViewController = [[AvailabilityViewController alloc]init];
+        availabilityViewController.startDate = self.startPicker.date;
+        availabilityViewController.endDate = self.endPicker.date;
+        
+        //push availability controller
+        [self.navigationController pushViewController:availabilityViewController animated:YES];
+    }
     
 }
+
+
+
 
 @end

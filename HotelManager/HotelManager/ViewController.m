@@ -55,7 +55,7 @@
     [reserveButton setTitle:@"Book a Hotel" forState:UIControlStateNormal];
     [lookupButton setTitle:@"Lookup Reservation" forState:UIControlStateNormal];
     
-    [browseButton setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:.76 alpha:1.0]];
+    [browseButton setBackgroundColor:[UIColor colorWithRed:242.0 green:61.0 blue:61.0 alpha:0.0]];
     [reserveButton setBackgroundColor:[UIColor colorWithRed:1.0 green:0.91 blue:0.76 alpha:1.0]];
     [lookupButton setBackgroundColor:[UIColor colorWithRed:0.86 green:0.91 blue:0.76 alpha:1.0]];
     
