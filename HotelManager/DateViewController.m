@@ -46,13 +46,17 @@
     UIDatePicker *endPicker = [[UIDatePicker alloc]init];
     
     startPicker.datePickerMode = UIDatePickerModeDate;
+    startPicker.minimumDate = NSDate.date;
     endPicker.datePickerMode = UIDatePickerModeDate;
     
     startPicker.translatesAutoresizingMaskIntoConstraints = NO;
     endPicker.translatesAutoresizingMaskIntoConstraints = NO; //makes it so we can do our constraints
+
     
     [self.view addSubview:startPicker];
     [self.view addSubview:endPicker];
+
+   
     
     NSMutableArray *constraints = [[NSMutableArray alloc]init];
     
@@ -73,6 +77,8 @@
     
     self.startPicker = startPicker;
     self.endPicker = endPicker;
+    
+   
 }
 
 -(void)setupDateViewController
@@ -87,7 +93,6 @@
 -(void)doneButtonSelected:(UIBarButtonItem *)sender
 {
     
-    
     if ([self.startPicker.date timeIntervalSinceReferenceDate] >= [self.endPicker.date timeIntervalSinceReferenceDate]) {
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Date Error" message:@"Start date must come before end date" preferredStyle:UIAlertControllerStyleAlert];
                                         
@@ -100,17 +105,6 @@
         [controller addAction:okAction];
         [self presentViewController:controller animated:YES completion: nil];
     }
-    
-//    else if ([self.startPicker.date timeIntervalSinceNow] < [self.startPicker.date]){
-//        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Date Error" message:@"Start date cannot be a previous day" preferredStyle:UIAlertControllerStyleAlert];
-//        
-//        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//            [self.startPicker setDate: [NSDate date]];
-//        }];
-//        
-//        [controller addAction:okAction];
-//        [self presentViewController:controller animated:YES completion:nil];
-//    }
     
     else {
         
