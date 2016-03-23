@@ -33,7 +33,7 @@
 		AF3865681CA1B91E00EE71BD /* BookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3865671CA1B91E00EE71BD /* BookViewController.m */; };
 		AFE189471CA2E75500034B70 /* LookupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE189461CA2E75500034B70 /* LookupViewController.m */; };
 		AFE189501CA2F7D800034B70 /* HotelManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE1894F1CA2F7D800034B70 /* HotelManagerTests.m */; };
-		AFE189591CA30B2F00034B70 /* Map_1.0_1.1.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = AFE189581CA30B2F00034B70 /* Map_1.0_1.1.xcmappingmodel */; };
+		AFE1895B1CA30DE900034B70 /* Map_1.0_1.1.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = AFE1895A1CA30DE900034B70 /* Map_1.0_1.1.xcmappingmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +96,7 @@
 		AFE1894F1CA2F7D800034B70 /* HotelManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotelManagerTests.m; sourceTree = "<group>"; };
 		AFE189511CA2F7D800034B70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFE189571CA30A7B00034B70 /* HotelManager 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HotelManager 1.1.xcdatamodel"; sourceTree = "<group>"; };
-		AFE189581CA30B2F00034B70 /* Map_1.0_1.1.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Map_1.0_1.1.xcmappingmodel; sourceTree = "<group>"; };
+		AFE1895A1CA30DE900034B70 /* Map_1.0_1.1.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Map_1.0_1.1.xcmappingmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +120,6 @@
 		AF3864E51CA05C5100EE71BD = {
 			isa = PBXGroup;
 			children = (
-				AFE189581CA30B2F00034B70 /* Map_1.0_1.1.xcmappingmodel */,
 				AF3864F01CA05C5100EE71BD /* HotelManager */,
 				AFE1894E1CA2F7D800034B70 /* HotelManagerTests */,
 				AF3864EF1CA05C5100EE71BD /* Products */,
@@ -195,6 +194,7 @@
 				AF38653F1CA0627C00EE71BD /* Class */,
 				AF3865401CA0628900EE71BD /* Categories */,
 				AF3864FD1CA05C5100EE71BD /* HotelManager.xcdatamodeld */,
+				AFE1895A1CA30DE900034B70 /* Map_1.0_1.1.xcmappingmodel */,
 				AF3865411CA0634E00EE71BD /* hotels.json */,
 			);
 			name = Models;
@@ -410,11 +410,11 @@
 				AF3864F61CA05C5100EE71BD /* AppDelegate.m in Sources */,
 				AF38653C1CA0623E00EE71BD /* Hotel.m in Sources */,
 				AF3864F31CA05C5100EE71BD /* main.m in Sources */,
-				AFE189591CA30B2F00034B70 /* Map_1.0_1.1.xcmappingmodel in Sources */,
 				AF38653D1CA0623E00EE71BD /* Guest+CoreDataProperties.m in Sources */,
 				AF3865591CA1A6A000EE71BD /* DateViewController.m in Sources */,
 				AF3865641CA1B2B700EE71BD /* ReservationService.m in Sources */,
 				AF3865551CA0AEC200EE71BD /* RoomsViewController.m in Sources */,
+				AFE1895B1CA30DE900034B70 /* Map_1.0_1.1.xcmappingmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,7 +614,7 @@
 				AFE189571CA30A7B00034B70 /* HotelManager 1.1.xcdatamodel */,
 				AF3864FE1CA05C5100EE71BD /* HotelManager.xcdatamodel */,
 			);
-			currentVersion = AF3864FE1CA05C5100EE71BD /* HotelManager.xcdatamodel */;
+			currentVersion = AFE189571CA30A7B00034B70 /* HotelManager 1.1.xcdatamodel */;
 			path = HotelManager.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
