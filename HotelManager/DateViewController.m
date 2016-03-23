@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic)UIDatePicker *startPicker;
 @property (strong, nonatomic)UIDatePicker *endPicker;
+@property (strong, nonatomic)NSDate *minimumDate;
 
 
 @end
@@ -86,7 +87,8 @@
 -(void)doneButtonSelected:(UIBarButtonItem *)sender
 {
     
-    if ([self.startPicker.date timeIntervalSinceReferenceDate] >= [self.endPicker.date timeIntervalSinceReferenceDate]) {
+    
+    if ([self.startPicker.date timeIntervalSinceReferenceDate] >= [self.startPicker.date timeIntervalSinceNow]) {
         UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Date Error" message:@"Start date must come before end date" preferredStyle:UIAlertControllerStyleAlert];
                                         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -99,16 +101,16 @@
         [self presentViewController:controller animated:YES completion: nil];
     }
     
-//    else if ([self.startPicker.date timeIntervalSinceNow] >= [self.startPicker.date timeIntervalSinceNow]){
-//        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Date Error" message:@"Start date cannot be a previous day" preferredStyle:UIAlertControllerStyleAlert];
-//        
-//        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//            [self.startPicker setDate: [NSDate date]];
-//        }];
-//        
-//        [controller addAction:okAction];
-//        [self presentViewController:controller animated:YES completion:nil];
-//    }
+    else if ([self.startPicker.date timeIntervalSinceNow] < [self.startPicker.date timeIntervalSinceReferenceDate]){
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Date Error" message:@"Start date cannot be a previous day" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.startPicker setDate: [NSDate date]];
+        }];
+        
+        [controller addAction:okAction];
+        [self presentViewController:controller animated:YES completion:nil];
+    }
     
     else {
         

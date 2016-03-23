@@ -98,7 +98,7 @@
     }
     
     Reservation *reservation = self.dataSource[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@, %@",reservation.guest.name, reservation.guest.lastName];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@, %@",reservation.guest.firstName, reservation.guest.lastName];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"Hotel: %@, Room: %@", reservation.room.hotel.name, reservation.room.number];
     
     return cell;
