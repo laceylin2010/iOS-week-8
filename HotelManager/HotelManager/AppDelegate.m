@@ -103,7 +103,17 @@
 
     [self setupRootViewController];
     [self bootstrapApp];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(persistentStoreDidImportChanges:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil];
     return YES;
+}
+
+-(void)persistentStoreDidImportChanges:(NSNotification *)notification
+{
+ 
+    NSLog(@"New Data");
+    [self.managedObjectContext performBlock:^{
+        [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+    }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -165,7 +175,7 @@
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"HotelManager.sqlite"];
     NSError *error = nil;
-    NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption : @YES, NSInferMappingModelAutomaticallyOption : @YES}; //start adding lightweight migration in core data
+    NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption : @YES, NSInferMappingModelAutomaticallyOption : @YES, NSPersistentStoreUbiquitousContainerIdentifierKey : @"HotelManager"};
     
     NSString *failureReason = @"There was an error creating or loading the application's saved data.";
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {

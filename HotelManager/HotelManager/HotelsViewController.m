@@ -41,7 +41,7 @@
         NSError *error;
         [_fetchedResultsController performFetch:&error];
         
-        if (!error) {
+        if (error) {
             NSLog(@"Error Fetching.. %@", error.localizedDescription);
         }
     }

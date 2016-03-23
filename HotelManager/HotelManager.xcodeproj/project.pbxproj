@@ -97,6 +97,7 @@
 		AFE189511CA2F7D800034B70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFE189571CA30A7B00034B70 /* HotelManager 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "HotelManager 1.1.xcdatamodel"; sourceTree = "<group>"; };
 		AFE1895A1CA30DE900034B70 /* Map_1.0_1.1.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Map_1.0_1.1.xcmappingmodel; sourceTree = "<group>"; };
+		AFE1895C1CA31C3D00034B70 /* HotelManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HotelManager.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +139,7 @@
 		AF3864F01CA05C5100EE71BD /* HotelManager */ = {
 			isa = PBXGroup;
 			children = (
+				AFE1895C1CA31C3D00034B70 /* HotelManager.entitlements */,
 				AF38650C1CA05D0B00EE71BD /* Global */,
 				AF38655E1CA1A72500EE71BD /* Category */,
 				AF38650B1CA05D0000EE71BD /* Controllers */,
@@ -341,6 +343,12 @@
 				TargetAttributes = {
 					AF3864ED1CA05C5100EE71BD = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = DX4E259Z9N;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					AFE1894C1CA2F7D800034B70 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -534,10 +542,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HotelManager/HotelManager.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HotelManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.laceyvu.HotelManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -545,10 +557,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HotelManager/HotelManager.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HotelManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.laceyvu.HotelManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
