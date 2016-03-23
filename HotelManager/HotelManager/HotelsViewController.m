@@ -10,33 +10,43 @@
 #import "AppDelegate.h"
 #import "Hotel.h"
 #import "RoomsViewController.h"
+#import "NSManagedObjectContext+Additions.h"
 
 
-@interface HotelsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface HotelsViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) NSArray *dataSource;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+//@property (strong, nonatomic) NSArray *dataSource;
 @property (strong, nonatomic) UITableView *tableView;
 
 @end
 
 @implementation HotelsViewController
 
--(NSArray *)dataSource
+-(NSFetchedResultsController *)fetchedResultsController
 {
-    if (!_dataSource) {
+    if (!_fetchedResultsController) {
         
-        AppDelegate *delegate = (AppDelegate *) [[UIApplication sharedApplication]delegate];
-        NSManagedObjectContext *context = delegate.managedObjectContext;
+        NSManagedObjectContext *context = [NSManagedObjectContext currentContext];
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
-        NSError *error;
-        _dataSource = [context executeFetchRequest:request error:&error];
-        if (error) {
-            NSLog(@"Error: %@", error.localizedDescription);
-        }
+        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
         
+        _fetchedResultsController = [[NSFetchedResultsController alloc]initWithFetchRequest:request
+                                                                       managedObjectContext:context
+                                                                         sectionNameKeyPath:nil
+                                                                                  cacheName:nil];
+        
+        _fetchedResultsController.delegate = self;
+        
+        NSError *error;
+        [_fetchedResultsController performFetch:&error];
+        
+        if (!error) {
+            NSLog(@"Error Fetching.. %@", error.localizedDescription);
+        }
     }
     
-    return _dataSource;
+    return _fetchedResultsController;
 }
 
 -(void)loadView
@@ -94,9 +104,24 @@
 
 #pragma mark - UITableViewDataSource
 
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Hotel *hotel = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        NSManagedObjectContext *context = [NSManagedObjectContext currentContext];
+        [context deleteObject:hotel];
+    }
+}
+
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dataSource.count;
+    return [[[self.fetchedResultsController sections]objectAtIndex: section]numberOfObjects];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -107,14 +132,73 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     
-    Hotel *hotel = [self.dataSource objectAtIndex:indexPath.row];
+    Hotel *hotel = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = hotel.name;
     
     return cell;
     
 }
 
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView beginUpdates];
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    UITableView *tableView = self.tableView;
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView endUpdates];
+}
+
 #pragma mark - UITableViewDelegate
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -139,7 +223,7 @@
 {
 
     RoomsViewController *roomViewController = [[RoomsViewController alloc]init];
-    roomViewController.hotel = self.dataSource[indexPath.row];
+    roomViewController.hotel = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [self.navigationController pushViewController: roomViewController animated:YES];
     
 }

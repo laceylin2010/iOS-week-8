@@ -13,7 +13,6 @@
 
 @property (strong, nonatomic)UIDatePicker *startPicker;
 @property (strong, nonatomic)UIDatePicker *endPicker;
-@property (readonly)NSTimeInterval timeIntervalSinceNow;
 
 
 @end
@@ -41,6 +40,7 @@
 
 -(void)setupCustomLayout
 {
+
     UIDatePicker *startPicker = [[UIDatePicker alloc]init];
     UIDatePicker *endPicker = [[UIDatePicker alloc]init];
     
@@ -99,16 +99,16 @@
         [self presentViewController:controller animated:YES completion: nil];
     }
     
-    else if ([self.startPicker.date timeIntervalSinceNow] <= [self.startPicker.date timeIntervalSinceReferenceDate]){
-        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Date Error" message:@"Start date cannot be a previous day" preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self.startPicker setDate: [NSDate date]];
-        }];
-        
-        [controller addAction:okAction];
-        [self presentViewController:controller animated:YES completion:nil];
-    }
+//    else if ([self.startPicker.date timeIntervalSinceNow] >= [self.startPicker.date timeIntervalSinceNow]){
+//        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Date Error" message:@"Start date cannot be a previous day" preferredStyle:UIAlertControllerStyleAlert];
+//        
+//        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//            [self.startPicker setDate: [NSDate date]];
+//        }];
+//        
+//        [controller addAction:okAction];
+//        [self presentViewController:controller animated:YES completion:nil];
+//    }
     
     else {
         

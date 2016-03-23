@@ -14,6 +14,7 @@
 
 +(NSArray *)fetchAvailbleRoomsForStartDate:(NSDate *)startDate endDate:(NSDate *)endDate;
 +(void)bookReservationWithGuest:(Guest *)guest room:(Room *)room startDate:(NSDate *)start end:(NSDate *)end;
++(NSArray *)fetchReservationsWithGuestName:(NSString *)name;
 
 
 @end

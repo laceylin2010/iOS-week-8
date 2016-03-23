@@ -70,4 +70,20 @@
 
 }
 
++(NSArray *)fetchReservationsWithGuestName:(NSString *)name
+{
+    NSManagedObjectContext *context =[NSManagedObjectContext currentContext]; //fetching from core data
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Reservation"];
+    request.predicate = [NSPredicate predicateWithFormat:@"guest.name CONTAINS %@ OR guest.lastName CONTAINS %@ OR guest.email CONTAINS %@", name, name, name]; //filtering what we want from core data
+    
+    NSError *error;
+    NSArray *reservations = [context executeFetchRequest:request error:&error];
+    
+    if (error) {
+        NSLog(@"%@", error.localizedDescription);
+    }
+    
+    return reservations;
+}
+
 @end

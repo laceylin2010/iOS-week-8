@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "HotelsViewController.h"
 #import "DateViewController.h"
+#import "LookupViewController.h"
 
 @interface ViewController ()
 
@@ -45,7 +46,7 @@
 
 -(void)setupCustomLayout
 {
-    float navigationBarHeight = CGRectGetHeight(self.navigationController.navigationBar.frame);
+//    float navigationBarHeight = CGRectGetHeight(self.navigationController.navigationBar.frame);
     
     UIButton *browseButton = [[UIButton alloc]init];
     UIButton *reserveButton = [[UIButton alloc]init];
@@ -70,18 +71,18 @@
     [self.view addSubview:browseButton];
     [self.view addSubview:reserveButton];
     [self.view addSubview:lookupButton];
-    
 
 
-    NSLayoutConstraint *browseLeading = [NSLayoutConstraint constraintWithItem: browseButton
+    NSLayoutConstraint *browseLeading = [NSLayoutConstraint constraintWithItem:browseButton
                                                                attribute:NSLayoutAttributeLeading
                                                                relatedBy:NSLayoutRelationEqual
                                                                   toItem:self.view
                                                                attribute:NSLayoutAttributeLeading
                                                               multiplier:1.0
                                                                 constant:0.0];
+
     
-    NSLayoutConstraint *browseTop = [NSLayoutConstraint constraintWithItem: browseButton
+    NSLayoutConstraint *browseTop = [NSLayoutConstraint constraintWithItem:browseButton
                                                            attribute:NSLayoutAttributeTop
                                                            relatedBy:NSLayoutRelationEqual
                                                               toItem:self.view
@@ -98,7 +99,13 @@
                                                                  constant:0.0];
     
 
-    NSLayoutConstraint *browsingHeight = [NSLayoutConstraint constraintWithItem:browseButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:reserveButton attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *browsingHeight = [NSLayoutConstraint constraintWithItem:browseButton
+                                                                      attribute:NSLayoutAttributeHeight
+                                                                      relatedBy:NSLayoutRelationEqual
+                                                                         toItem:reserveButton
+                                                                      attribute:NSLayoutAttributeHeight
+                                                                     multiplier:1.0
+                                                                       constant:0.0];
     
     browseLeading.active = YES;
     browseTop.active = YES;
@@ -202,7 +209,7 @@
 
 -(void)lookupButtonSelected:(UIButton *)sender
 {
-//    [self.navigationController pushViewController:[[LookupViewController alloc]init] animated:YES];
+    [self.navigationController pushViewController:[[LookupViewController alloc]init] animated:YES];
 }
 
 
